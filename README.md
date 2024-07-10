@@ -16,3 +16,69 @@ The yt-whisper component processes video files with **Whisper**, generating time
 ### Docker for deployment
 
 The architecture uses **Docker** for consistent deployment. **Poetry** manages dependencies for reproducible builds. Each component has separate Dockerfiles and entry points for modular development and testing. Scripts support both local and Docker execution.
+
+<br />
+
+## Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/syedamaann/karpathy_lecture_chat.git
+cd karpathy_lecture_chat
+```
+
+### 2. Set Up Environment Variables and Configure API Key
+- Create a `.env` file with the following content:
+  ```bash
+  OPENAI_API_KEY='your-api-key'
+  ```
+
+- Add the API key to your shell configuration:
+  ```bash
+  echo "export OPENAI_API_KEY='your-api-key'" >> ~/.zshrc
+  source ~/.zshrc
+  ```
+
+### 3. Using Docker
+- **Build and Run with Docker Compose:**
+  ```bash
+  docker compose up --build
+  ```
+
+### 4. Running Locally (Without Docker)
+- **Install Dependencies:**
+  ```bash
+  # For docker-bot
+  cd docker-bot
+  poetry install
+  
+  # For yt-whisper
+  cd ../yt-whisper
+  poetry install
+  ```
+
+- **Run the Scripts Locally:**
+  ```bash
+  # Run docker-bot
+  cd docker-bot
+  ./scripts/run_locally.sh
+  
+  # Run yt-whisper
+  cd ../yt-whisper
+  ./scripts/run_locally.sh
+  ```
+
+- **Running Tests:**
+  ```bash
+  # For docker-bot
+  cd docker-bot
+  poetry run pytest
+ 
+  # For yt-whisper
+  cd ../yt-whisper
+  poetry run pytest
+  ```
+
+### 5. Accessing the Services
+- `yt-whisper` runs on `localhost:8503`
+- `docker-bot` runs on `localhost:8504`
