@@ -16,3 +16,8 @@ services:
       - 8503:8503
     env_file:
       - .env
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1

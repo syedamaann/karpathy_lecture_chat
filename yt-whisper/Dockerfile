@@ -14,7 +14,16 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
+# Set HOME to a writable directory for Streamlit
+ENV HOME=/tmp
+
 WORKDIR /app
+
+# Install ffmpeg and nodejs for yt-dlp
+# nodejs is required for decrypting YouTube n/sig values
+RUN apt-get update && \
+    apt-get install -y ffmpeg nodejs npm && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/

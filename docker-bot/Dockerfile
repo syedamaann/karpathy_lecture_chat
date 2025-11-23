@@ -14,6 +14,9 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
+# Set HOME to a writable directory for Streamlit
+ENV HOME=/tmp
+
 WORKDIR /app
 
 # Create a non-privileged user that the app will run under.
