@@ -1,6 +1,8 @@
-# Learn better with Lecture Quiz and Smart Timestamps!
+# Learn better with Lecture Quiz, Smart Timestamps, and AI-Generated Infographics!
 
-I needed a quick way to review and quiz myself on Karpathy’s dense lecture videos. I thought it would be cool to generate custom timestamps for rewatching specific segments based on my quiz responses. So, I made this project using OpenAI's Whisper for video transcription and Pinecone for semantic search to help myself and others have an efficient study workflow, with better revision through targeted video playback.
+I needed a quick way to review and quiz myself on Karpathy's dense lecture videos. I thought it would be cool to generate custom timestamps for rewatching specific segments based on my quiz responses. So, I made this project using OpenAI's Whisper for video transcription and Pinecone for semantic search to help myself and others have an efficient study workflow, with better revision through targeted video playback.
+
+**NEW:** Now includes automatic infographic generation using Google's Nano Banana Pro (Gemini 3 Pro Image) to create visual summaries of lecture transcripts!
 
  <br />
 
@@ -9,9 +11,11 @@ https://github.com/syedamaann/karpathy_lecture_chat/assets/74735966/6ff84ba4-447
  <br />
 
 
-### Video processing with Whisper and Pinecone
+### Video processing with Whisper, Pinecone, and Nano Banana Pro
 
 The yt-whisper component processes video files with **Whisper**, generating time-stamped transcripts. These transcripts are then indexed in **Pinecone** for fast and accurate retrieval of specific video segments based on quiz responses. The docker-bot component integrates with the transcription service, providing an interactive chat interface. This bot uses the indexed transcripts in Pinecone to offer precise video segments for rewatching based on user queries.
+
+**New Feature:** After transcription, the system automatically generates a professional infographic using **Nano Banana Pro** (Gemini 3 Pro Image Preview). The infographic visually summarizes key points from the lecture transcript with clean typography, professional design, and legible text - perfect for quick reference and study material.
 
 ### Docker for deployment
 
@@ -27,15 +31,20 @@ git clone https://github.com/syedamaann/karpathy_lecture_chat.git
 cd karpathy_lecture_chat
 ```
 
-### 2. Set Up Environment Variables and Configure API Key
+### 2. Set Up Environment Variables and Configure API Keys
 - Create a `.env` file with the following content:
   ```bash
-  OPENAI_API_KEY='your-api-key'
+  OPENAI_TOKEN='your-openai-api-key'
+  PINECONE_TOKEN='your-pinecone-api-key'
+  GOOGLE_API_KEY='your-google-api-key'
   ```
 
-- Add the API key to your shell configuration:
+- Get your Google API key from [Google AI Studio](https://aistudio.google.com/app/apikey) to use Nano Banana Pro for infographic generation
+
+- Add the API keys to your shell configuration:
   ```bash
-  echo "export OPENAI_API_KEY='your-api-key'" >> ~/.zshrc
+  echo "export OPENAI_TOKEN='your-openai-api-key'" >> ~/.zshrc
+  echo "export GOOGLE_API_KEY='your-google-api-key'" >> ~/.zshrc
   source ~/.zshrc
   ```
 

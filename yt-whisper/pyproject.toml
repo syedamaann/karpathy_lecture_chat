@@ -9,9 +9,10 @@ readme = "README.md"
 python = ">=3.11,<3.13"
 streamlit = "^1.29.0"
 python-dotenv = "^1.0.0"
-yt-dlp = "^2024.0.0"
+yt-dlp = ">=2024.12.23"
 openai = "^1.7.0"
 pinecone-client = "^3.0.2"
+google-genai = "^1.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
